@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { AddProfileRecordComponent } from './add-profile-record/add-profile-record.component';
 import { EditProfileRecordComponent } from './edit-profile-record/edit-profile-record.component';
 import { DetailProfileRecordComponent } from './detail-profile-record/detail-profile-record.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,13 +15,10 @@ import { DetailProfileRecordComponent } from './detail-profile-record/detail-pro
     HomeComponent,
     AddProfileRecordComponent,
     EditProfileRecordComponent,
-    DetailProfileRecordComponent
+    DetailProfileRecordComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
