@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { UserAddAction, UserUpdateAction } from '../store/action/user-profile.action';
+import { RootReducerState } from '../store/reducer';
 import { UserProfileService } from '../user-profile.service';
 
 @Component({
@@ -19,6 +22,7 @@ export class AddProfileRecordComponent implements OnInit {
     private profileService: UserProfileService,
     private router: Router,
     private route: ActivatedRoute,
+    private store: Store<RootReducerState>
   ) {
     this.addUserForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -57,6 +61,7 @@ export class AddProfileRecordComponent implements OnInit {
     if (this.isUpdateData) {
       this.profileService.updateUserData(this.addUserForm.value, this.userId).subscribe((res) => {
         if (res) {
+          this.store.dispatch(new UserUpdateAction({ data: res }));
           this.router.navigateByUrl('/home');
         }
       });
@@ -64,6 +69,7 @@ export class AddProfileRecordComponent implements OnInit {
     else {
       this.profileService.addUserData(this.addUserForm.value).subscribe((res) => {
         if (res) {
+          this.store.dispatch(new UserAddAction({ data: res }));
           this.router.navigateByUrl('/home');
         }
       });
