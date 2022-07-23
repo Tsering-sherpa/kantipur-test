@@ -62,8 +62,9 @@
 <!-- Modal -->
 <div class="card w-50 fixed-top" style="margin: auto" *ngIf="deleteData">
   <div class="m-3">
-    Are you sure want to delete {{ selectedUser.firstName }}
-    {{ selectedUser.lastName }}
+    Are you sure want to delete<strong>
+      {{ selectedUser.firstName }} {{ selectedUser.lastName }}</strong
+    >
   </div>
   <div class="d-flex justify-content-between">
     <div class="btn btn-secondary w-50 m-2" (click)="deleteUser()">No</div>

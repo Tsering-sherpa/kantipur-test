@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserProfileModel } from '../models/user-profile-model';
 import { UserProfileService } from '../user-profile.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { UserProfileService } from '../user-profile.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public allUserData: any[] = [];
+  public allUserData: UserProfileModel[] = [];
   public deleteData = false;
   public selectedUser: any;
 
