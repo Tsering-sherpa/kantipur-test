@@ -34,10 +34,10 @@
             <td>{{ user.address }}</td>
             <td>{{ user.date_of_birth }}</td>
             <td>
-              <a href="#" [routerLink]="['/ViewEmployee/', user.id]" class="btn"
+              <a href="#" [routerLink]="['/view-profile/', user.id]" class="btn"
                 ><i class="fa fa-eye"></i
               ></a>
-              <a href="#" [routerLink]="['/EditEmployee/', user.id]" class="btn"
+              <a href="#" [routerLink]="['/edit-profile/', user.id]" class="btn"
                 ><i class="fa fa-edit edit"></i
               ></a>
               <button type="button" (click)="deleteUser(user)" class="btn">
