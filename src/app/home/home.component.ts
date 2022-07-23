@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { takeUntil } from 'rxjs';
 import { UserProfileService } from '../user-profile.service';
 
 @Component({
@@ -9,16 +8,37 @@ import { UserProfileService } from '../user-profile.service';
 })
 export class HomeComponent implements OnInit {
   public allUserData: any[] = [];
+  public deleteData = false;
+  public selectedUser: any;
 
-  constructor(private profileService: UserProfileService) {}
+  constructor(private profileService: UserProfileService) { }
 
   ngOnInit(): void {
+    this.initialize();
+  }
+
+  public initialize(): void {
     this.profileService.getAllUserData().subscribe((res) => {
       this.allUserData = res;
     });
   }
 
-  public deleteUser(user: any): void {}
+  public getSelectedUser(user: any): void {
+    this.deleteData = true;
+    this.selectedUser = user;
+  }
 
-  public addNewUser(): void {}
+  public deleteUser(deleteUser = false): void {
+    if (!deleteUser) {
+      this.deleteData = false;
+    }
+    else {
+      this.profileService.deleteuserData(this.selectedUser.id).subscribe(res => {
+        if (res) {
+          this.deleteData = false;
+          this.initialize();
+        }
+      })
+    }
+  }
 }

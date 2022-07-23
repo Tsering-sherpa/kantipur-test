@@ -2,12 +2,15 @@
   <div class="table-responsive">
     <div class="table-wrapper">
       <div class="table-title">
-        <div class="row">
-          <div class="col-sm-6">
+        <div class="my-3 d-flex justify-content-between">
+          <div>
             <h4><b>Manage Profiles</b></h4>
           </div>
-          <div class="col-sm-6">
-            <button class="btn btn-success" (click)="addNewUser()">
+          <div>
+            <button
+              class="btn btn-success float-right"
+              routerLink="/add-profile"
+            >
               <i class="fa fa-plus-circle"></i><span> Add New User</span>
             </button>
           </div>
@@ -28,30 +31,42 @@
         </thead>
         <tbody>
           <tr *ngFor="let user of allUserData" class="center-align">
-            <td>{{ user.first_name }}</td>
-            <td>{{ user.last_name }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.address }}</td>
-            <td>{{ user.date_of_birth }}</td>
+            <td>{{ user.dateOfBirth | date }}</td>
             <td>
               <a href="#" [routerLink]="['/view-profile/', user.id]" class="btn"
                 ><i class="fa fa-eye"></i
               ></a>
-              <a href="#" [routerLink]="['/edit-profile/', user.id]" class="btn"
+              <a href="#" [routerLink]="['/add-profile/', user.id]" class="btn"
                 ><i class="fa fa-edit edit"></i
               ></a>
-              <button type="button" (click)="deleteUser(user)" class="btn">
+              <button type="button" class="btn" (click)="getSelectedUser(user)">
                 <i class="fa fa-trash"></i>
               </button>
             </td>
           </tr>
           <tr>
             <td *ngIf="allUserData.length == 0" colspan="6">
-              No User Profile Data Found
+              No User Profile Record Found
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="card w-50 fixed-top" style="margin: auto" *ngIf="deleteData">
+  <div class="m-3">
+    Are you sure want to delete {{ selectedUser.firstName }}
+    {{ selectedUser.lastName }}
+  </div>
+  <div class="d-flex justify-content-between">
+    <div class="btn btn-secondary w-50 m-2" (click)="deleteUser()">No</div>
+    <div class="btn btn-danger w-50 m-2" (click)="deleteUser(true)">yes</div>
   </div>
 </div>
