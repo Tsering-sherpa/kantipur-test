@@ -9,7 +9,7 @@ export class UserProfileService {
   private profileUrl =
     'https://62daf413d1d97b9e0c499810.mockapi.io/kantipur_test/v1/user/';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   public addUserData(params: any): Observable<any> {
     return this.httpClient.post(this.profileUrl, params);
@@ -27,7 +27,7 @@ export class UserProfileService {
     return this.httpClient.get(this.profileUrl + userId);
   }
 
-  public getAllUserData(): Observable<any> {
-    return this.httpClient.get(this.profileUrl);
+  public getAllUserData(userId?: number): Observable<any> {
+    return this.httpClient.get(this.profileUrl + (userId ? userId : ''));
   }
 }
