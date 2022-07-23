@@ -1,1 +1,43 @@
-<p>detail-profile-record works!</p>
+<div class="container">
+  <div class="my-3 d-flex justify-content-between">
+    <div>
+      <h4><b>User Details</b></h4>
+    </div>
+    <div>
+      <a href="#" routerLink="/home" class="btn btn-secondary back"
+        ><i class="fa fa-arrow-circle-left"></i> Back</a
+      >
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="card">
+    <div class="text-center">
+      <img
+        class="w-25"
+        src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+        alt=""
+      />
+    </div>
+    <div class="my-2 text-center">
+      <span>First Name</span>
+      <h4>{{ userData.firstName }}</h4>
+    </div>
+    <div class="my-2 text-center">
+      <span>Last Name</span>
+      <h4>{{ userData.lastName }}</h4>
+    </div>
+    <div class="my-2 text-center">
+      <span>Email</span>
+      <h4>{{ userData.email }}</h4>
+    </div>
+    <div class="my-2 text-center">
+      <span>Address</span>
+      <h4>{{ userData.address }}</h4>
+    </div>
+    <div class="my-2 text-center">
+      <span>Bio</span>
+      <h5>{{ userData.profile }}</h5>
+    </div>
+  </div>
+</div>
